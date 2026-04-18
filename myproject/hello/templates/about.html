@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}About Us | The Vision of TechGroup{% endblock %}
+
+{% block content %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<section class="relative min-h-[90vh] flex items-center pt-24 px-6 overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+    
+    <div class="max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right" data-aos-duration="1200">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-8 uppercase tracking-[0.2em]">
+                    Our Philosophy
+                </div>
+                <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-8">
+                    Defining the <br><span class="text-gradient">Next Epoch.</span>
+                </h1>
+                <p class="text-gray-400 text-xl font-light leading-relaxed mb-10 max-w-xl">
+                    TechGroup bukan sekadar tim pengembang. Kami adalah kolektif yang percaya bahwa <span class="text-white font-semibold">integritas data</span> dan <span class="text-white font-semibold">otomasi cerdas</span> adalah kunci efisiensi masa depan.
+                </p>
+                
+                <div class="flex flex-wrap gap-10 py-10 border-t border-white/5">
+                    <div>
+                        <h4 class="text-3xl font-black text-white">2026</h4>
+                        <p class="text-xs text-blue-500 font-bold uppercase tracking-widest">Founding Year</p>
+                    </div>
+                    <div>
+                        <h4 class="text-3xl font-black text-white">100%</h4>
+                        <p class="text-xs text-blue-500 font-bold uppercase tracking-widest">Digital Focused</p>
+                    </div>
+                    <div>
+                        <h4 class="text-3xl font-black text-white">24/7</h4>
+                        <p class="text-xs text-blue-500 font-bold uppercase tracking-widest">Active Research</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative" data-aos="zoom-in-left" data-aos-duration="1500">
+                <div class="aspect-[4/5] glass rounded-[80px] overflow-hidden relative group p-4">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" 
+                         class="w-full h-full object-cover rounded-[60px] opacity-60 group-hover:scale-105 transition-transform duration-[2s]" alt="Cyber Security">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                </div>
+                <div class="absolute -bottom-10 -left-10 glass p-8 rounded-[32px] border-blue-500/30 hidden md:block" data-aos="fade-up" data-aos-delay="500">
+                    <i data-lucide="cpu" class="text-blue-500 w-10 h-10 mb-4"></i>
+                    <h5 class="text-white font-bold">Innovation Core</h5>
+                    <p class="text-gray-500 text-xs">Propelling IoT Frontiers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-aos="fade-up">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Visi & <span class="text-blue-500">Prinsip.</span></h2>
+            <p class="text-gray-500 max-w-xl mx-auto">Tiga pilar utama yang menjaga standar kualitas setiap proyek kami.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-12 rounded-[50px] hover:bg-white/[0.05] transition-all group" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 transition-colors">
+                    <i data-lucide="shield-check" class="text-blue-500 group-hover:text-white w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Unbreakable Security</h3>
+                <p class="text-gray-400 font-light text-sm leading-relaxed">Kami menerapkan enkripsi end-to-end pada setiap transmisi data sensor untuk menjamin privasi tingkat tinggi.</p>
+            </div>
+
+            <div class="glass p-12 rounded-[50px] hover:bg-white/[0.05] transition-all group" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 bg-purple-600/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-purple-600 transition-colors">
+                    <i data-lucide="zap" class="text-purple-500 group-hover:text-white w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Infinite Scalability</h3>
+                <p class="text-gray-400 font-light text-sm leading-relaxed">Arsitektur Django kami dirancang untuk menangani lonjakan data besar tanpa mengorbankan kecepatan respon.</p>
+            </div>
+
+            <div class="glass p-12 rounded-[50px] hover:bg-white/[0.05] transition-all group" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-16 h-16 bg-green-600/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-green-600 transition-colors">
+                    <i data-lucide="refresh-ccw" class="text-green-500 group-hover:text-white w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Continuous Evolve</h3>
+                <p class="text-gray-400 font-light text-sm leading-relaxed">Kami terus melakukan riset pada teknologi AI terbaru untuk diintegrasikan ke dalam ekosistem monitoring kami.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-32 bg-white/5 rounded-[60px] mx-6 mb-32">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-4xl font-extrabold text-center mb-20" data-aos="fade-up">Milestones <span class="text-blue-500">.</span></h2>
+        
+        <div class="space-y-20">
+            <div class="flex flex-col md:flex-row gap-10 md:gap-20 relative" data-aos="fade-left">
+                <div class="text-blue-500 font-black text-6xl opacity-20 md:w-32">24</div>
+                <div class="flex-1 border-l border-blue-500/30 ps-10">
+                    <h4 class="text-2xl font-bold mb-3">The Blueprint</h4>
+                    <p class="text-gray-500">Tahap konseptualisasi di mana kami mulai merancang jembatan antara hardware Raspberry Pi dengan Django Backend.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-10 md:gap-20 relative" data-aos="fade-right">
+                <div class="text-blue-500 font-black text-6xl opacity-20 md:w-32">25</div>
+                <div class="flex-1 border-l border-blue-500/30 ps-10">
+                    <h4 class="text-2xl font-bold mb-3">IoT Integration</h4>
+                    <p class="text-gray-500">Implementasi protokol MQTT pertama kami yang berhasil menghubungkan 100+ sensor secara simultan.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-10 md:gap-20 relative" data-aos="fade-left">
+                <div class="text-blue-500 font-black text-6xl opacity-20 md:w-32">26</div>
+                <div class="flex-1 border-l border-blue-500/30 ps-10">
+                    <h4 class="text-2xl font-bold mb-3">Global Expansion</h4>
+                    <p class="text-gray-500">Peluncuran platform TechGroup V2.0 dengan integrasi monitoring AI untuk skala industri.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+</script>
+
+<style>
+    .text-gradient {
+        background: linear-gradient(to right, #60a5fa, #a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+</style>
+{% endblock %}

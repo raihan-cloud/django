@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TechGroup | Future of IoT{% endblock %}</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #050505; 
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .glass { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(16px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+
+        .text-gradient { 
+            background: linear-gradient(to right, #60a5fa, #a855f7); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        /* Nav Link Animation */
+        .nav-link { transition: all 0.3s ease; position: relative; }
+        .nav-link::after { 
+            content: ''; 
+            position: absolute; 
+            width: 0; 
+            height: 2px; 
+            bottom: -6px; 
+            left: 0; 
+            background: #60a5fa; 
+            transition: width 0.3s ease; 
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: white; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="overflow-x-hidden" x-data="{ mobileMenuOpen: false }">
+
+    <nav class="fixed top-0 w-full z-[100] glass" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="{% url 'home' %}" class="text-2xl font-extrabold tracking-tighter flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:rotate-12 transition-transform duration-300">
+                    <i data-lucide="zap" class="text-white w-6 h-6 fill-current"></i>
+                </div>
+                <span class="flex items-center">TECH<span class="text-blue-500">GROUP</span></span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-10 text-[13px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="{% url 'home' %}" class="nav-link">Home</a>
+                <a href="{% url 'about' %}" class="nav-link">About</a>
+                <a href="{% url 'services' %}" class="nav-link">Services</a>
+                <a href="{% url 'anggota' %}" class="nav-link">Team</a>
+                <a href="{% url 'kontak' %}" class="px-6 py-3 bg-white text-black rounded-2xl hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-xl shadow-white/5">
+                    Get in Touch
+                </a>
+            </div>
+
+            <button class="md:hidden text-white p-2" @click="mobileMenuOpen = !mobileMenuOpen">
+                <i data-lucide="menu" x-show="!mobileMenuOpen"></i>
+                <i data-lucide="x" x-show="mobileMenuOpen"></i>
+            </button>
+        </div>
+
+        <div x-show="mobileMenuOpen" 
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 -translate-y-10"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="md:hidden absolute top-20 left-0 w-full glass p-8 flex flex-col gap-6 font-bold text-center">
+            <a href="{% url 'home' %}" @click="mobileMenuOpen = false" class="hover:text-blue-500 transition-colors">Home</a>
+            <a href="{% url 'about' %}" @click="mobileMenuOpen = false" class="hover:text-blue-500 transition-colors">About</a>
+            <a href="{% url 'services' %}" @click="mobileMenuOpen = false" class="hover:text-blue-500 transition-colors">Services</a>
+            <a href="{% url 'anggota' %}" @click="mobileMenuOpen = false" class="hover:text-blue-500 transition-colors">Team</a>
+            <a href="{% url 'kontak' %}" @click="mobileMenuOpen = false" class="text-blue-500">Contact Us</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-black border-t border-white/5 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="zap" class="text-white w-4 h-4 fill-current"></i>
+                        </div>
+                        <span class="text-xl font-bold tracking-tighter">TECHGROUP</span>
+                    </div>
+                    <p class="text-gray-500 max-w-sm leading-relaxed mb-6">
+                        Pionir dalam integrasi sistem IoT dan Web Development untuk solusi infrastruktur digital masa depan.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-600 hover:text-white transition-colors"><i data-lucide="instagram"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-white transition-colors"><i data-lucide="github"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-white transition-colors"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-6">Navigation</h5>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="{% url 'home' %}" class="hover:text-blue-500 transition-colors">Home</a></li>
+                        <li><a href="{% url 'about' %}" class="hover:text-blue-500 transition-colors">About</a></li>
+                        <li><a href="{% url 'services' %}" class="hover:text-blue-500 transition-colors">Services</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-6">Support</h5>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="{% url 'kontak' %}" class="hover:text-blue-500 transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-500 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-blue-500 transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-600 text-xs">
+                    &copy; 2026 TechGroup Excellence. All rights reserved.
+                </p>
+                <p class="text-gray-600 text-xs flex items-center gap-1">
+                    Made with <i data-lucide="heart" class="w-3 h-3 text-red-500 fill-current"></i> in Indonesia
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.onscroll = function() {
+            const nav = document.getElementById('navbar');
+            if (window.pageYOffset > 50) {
+                nav.style.backgroundColor = "rgba(5, 5, 5, 0.85)";
+            } else {
+                nav.style.backgroundColor = "rgba(255, 255, 255, 0.02)";
+            }
+        };
+    </script>
+</body>
+</html>

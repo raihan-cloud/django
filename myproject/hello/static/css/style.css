@@ -1,0 +1,19 @@
+/* hello/static/css/style.css */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card-tim {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    background: white;
+    padding: 20px;
+    margin: 10px;
+}
+
+.card-tim:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}

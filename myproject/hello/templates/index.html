@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGroup Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #ffffff; }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    </style>
+</head>
+<body>
+    <nav class="p-6 border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <span class="text-xl font-bold tracking-tighter text-blue-500">TECHGROUP</span>
+            <div class="flex gap-6 text-sm text-gray-400">
+                <a href="{% url 'home' %}">Dashboard</a>
+                <a href="{% url 'services' %}">Services</a>
+                <a href="{% url 'kontak' %}">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto pt-20 px-6 text-center">
+        <h1 class="text-6xl font-extrabold mb-6">Next-Gen <span class="text-blue-500">IoT Operations</span></h1>
+        <p class="text-gray-400 max-w-2xl mx-auto mb-12">Selamat datang kembali, Raihan. Sistem monitoring berjalan optimal.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for service in services %}
+            <div class="glass-card p-8 rounded-[32px] text-left">
+                <i data-lucide="{{ service.ikon }}" class="text-blue-500 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">{{ service.judul }}</h3>
+                <p class="text-gray-500 text-sm">{{ service.desc }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

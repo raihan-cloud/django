@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-20">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+    <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[100px] -z-10"></div>
+
+    <div class="max-w-5xl text-center" data-aos="zoom-out" data-aos-duration="1200">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-8 uppercase tracking-[0.2em]">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            Industry 4.0 Ready
+        </div>
+        <h1 class="text-6xl md:text-9xl font-extrabold tracking-tighter leading-[0.9] mb-8">
+            The Future of <br><span class="text-gradient">Connectivity.</span>
+        </h1>
+        <p class="text-gray-400 text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+            Membangun sistem monitoring pintar yang menghubungkan <span class="text-white font-semibold">Hardware IoT</span> dengan kekuatan <span class="text-white font-semibold">Django Enterprise</span> untuk otomasi masa depan.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <a href="{% url 'services' %}" class="group px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold transition-all shadow-2xl shadow-blue-500/30 w-full sm:w-auto flex items-center justify-center gap-2">
+                Get Started <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="{% url 'about' %}" class="px-10 py-5 glass hover:bg-white/10 rounded-2xl font-bold transition-all w-full sm:w-auto">
+                Watch Demo
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-10 max-w-7xl mx-auto px-6" data-aos="fade-up">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="glass p-10 rounded-[40px] text-center group hover:border-blue-500/30 transition-all">
+            <h3 class="text-5xl font-extrabold mb-2 text-gradient">99.9<span class="text-sm">%</span></h3>
+            <p class="text-gray-500 uppercase text-[10px] tracking-[0.3em] font-black">System Uptime</p>
+        </div>
+        <div class="glass p-10 rounded-[40px] text-center group hover:border-blue-500/30 transition-all">
+            <h3 class="text-5xl font-extrabold mb-2 text-gradient">1.2<span class="text-sm">ms</span></h3>
+            <p class="text-gray-500 uppercase text-[10px] tracking-[0.3em] font-black">Avg Latency</p>
+        </div>
+        <div class="glass p-10 rounded-[40px] text-center group hover:border-blue-500/30 transition-all">
+            <h3 class="text-5xl font-extrabold mb-2 text-gradient">500<span class="text-sm">+</span></h3>
+            <p class="text-gray-500 uppercase text-[10px] tracking-[0.3em] font-black">Nodes Active</p>
+        </div>
+        <div class="glass p-10 rounded-[40px] text-center group hover:border-blue-500/30 transition-all">
+            <h3 class="text-5xl font-extrabold mb-2 text-gradient">24<span class="text-sm">/7</span></h3>
+            <p class="text-gray-500 uppercase text-[10px] tracking-[0.3em] font-black">AI Monitoring</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-32 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20" data-aos="fade-up">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-6 italic tracking-tighter">Engineered for Excellence.</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">Kami tidak hanya membuat website, kami membangun infrastruktur digital yang resilien.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div class="md:col-span-8 glass p-12 rounded-[50px] relative overflow-hidden group" data-aos="fade-right">
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-8">
+                    <i data-lucide="layers" class="text-white w-8 h-8"></i>
+                </div>
+                <h3 class="text-3xl font-bold mb-4">Scalable Architecture</h3>
+                <p class="text-gray-400 max-w-md font-light">Mampu menangani jutaan request per detik dengan optimasi database PostgreSQL dan sistem caching Redis yang canggih.</p>
+            </div>
+            <i data-lucide="database" class="absolute -bottom-10 -right-10 w-64 h-64 text-white opacity-[0.02] group-hover:opacity-[0.05] transition-opacity"></i>
+        </div>
+
+        <div class="md:col-span-4 glass p-12 rounded-[50px] flex flex-col justify-between group" data-aos="fade-left">
+            <div class="w-16 h-16 bg-purple-600/20 rounded-2xl flex items-center justify-center mb-6">
+                <i data-lucide="shield-check" class="text-purple-500 w-8 h-8"></i>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold mb-2">Military Grade Security</h3>
+                <p class="text-gray-500 text-sm">Enkripsi AES-256 untuk setiap paket data IoT.</p>
+            </div>
+        </div>
+
+        <div class="md:col-span-4 glass p-12 rounded-[50px] group" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-16 h-16 bg-green-600/20 rounded-2xl flex items-center justify-center mb-6">
+                <i data-lucide="cpu" class="text-green-500 w-8 h-8"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Edge Computing</h3>
+            <p class="text-gray-500 text-sm">Pemrosesan data langsung di perangkat untuk respon instan.</p>
+        </div>
+
+        <div class="md:col-span-8 glass p-12 rounded-[50px] flex items-center justify-between overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+            <div class="max-w-md">
+                <h3 class="text-3xl font-bold mb-4">Real-time Dashboard</h3>
+                <p class="text-gray-400 font-light">Pantau seluruh node jaringan Anda melalui interface yang elegan dan intuitif secara real-time.</p>
+            </div>
+            <div class="hidden lg:block">
+                <div class="w-48 h-32 bg-blue-600/20 rounded-2xl border border-blue-500/20 p-4">
+                    <div class="h-2 w-full bg-blue-500/40 rounded-full mb-2"></div>
+                    <div class="h-2 w-3/4 bg-blue-500/20 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-32 bg-white/5 rounded-[60px] mx-6">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-5xl font-extrabold mb-10 leading-tight">Bagaimana Kami <br>Bekerja <span class="text-blue-500">?</span></h2>
+                <div class="space-y-8">
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 glass rounded-full flex items-center justify-center font-bold text-blue-500">01</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1 text-white">Analysis & Design</h4>
+                            <p class="text-gray-500 text-sm">Kami menganalisa topologi jaringan dan kebutuhan data secara mendalam.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 glass rounded-full flex items-center justify-center font-bold text-blue-500">02</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1 text-white">Rapid Prototyping</h4>
+                            <p class="text-gray-500 text-sm">Pengembangan cepat menggunakan Django boilerplate yang sudah teroptimasi.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 glass rounded-full flex items-center justify-center font-bold text-blue-500">03</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1 text-white">Deployment & Scale</h4>
+                            <p class="text-gray-500 text-sm">Integrasi ke cloud server dengan monitoring 24/7 otomatis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <div class="aspect-video glass rounded-[40px] p-8 overflow-hidden">
+                    <pre class="text-blue-400 text-xs font-mono"><code>
+class IoTDevice(models.Model):
+    name = models.CharField(max_length=100)
+    status = models.BooleanField(default=True)
+    last_ping = models.DateTimeField(auto_now=True)
+
+    def is_online(self):
+        return self.status == "ACTIVE"
+                    </code></pre>
+                </div>
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-600 rounded-full blur-[60px] opacity-20"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+</script>
+
+<style>
+    .text-gradient {
+        background: linear-gradient(to right, #60a5fa, #a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+</style>
+{% endblock %}

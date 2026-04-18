@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}Services | Enterprise Solutions{% endblock %}
+
+{% block content %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<section class="relative pt-32 pb-20 px-6 overflow-hidden text-center">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-blue-600/10 rounded-full blur-[120px] -z-10"></div>
+    
+    <div class="max-w-4xl mx-auto" data-aos="fade-down">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-6 uppercase tracking-[0.2em]">
+            What We Do
+        </div>
+        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-tight">
+            Our Technical <span class="text-gradient">Capabilities.</span>
+        </h1>
+        <p class="text-gray-400 text-xl font-light max-w-2xl mx-auto leading-relaxed">
+            Kami menyediakan solusi terintegrasi dari sensor fisik hingga analisis data cloud menggunakan teknologi terbaru.
+        </p>
+    </div>
+</section>
+
+<section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for s in services %}
+            <div class="glass group p-10 rounded-[50px] hover:border-blue-500/40 transition-all duration-500 relative overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-500 shadow-lg shadow-blue-500/0 group-hover:shadow-blue-500/20">
+                        <i data-lucide="{{ s.ikon }}" class="text-blue-500 group-hover:text-white w-8 h-8 transition-colors"></i>
+                    </div>
+                    
+                    <h3 class="text-3xl font-bold mb-6 text-white">{{ s.judul }}</h3>
+                    <p class="text-gray-400 font-light leading-relaxed mb-8">
+                        {{ s.desc }}
+                    </p>
+                    
+                    <ul class="space-y-3 mb-10">
+                        <li class="flex items-center gap-3 text-sm text-gray-500">
+                            <i data-lucide="check" class="w-4 h-4 text-blue-500"></i> Industry Standard
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-gray-500">
+                            <i data-lucide="check" class="w-4 h-4 text-blue-500"></i> Secure by Design
+                        </li>
+                    </ul>
+
+                    <a href="{% url 'kontak' %}" class="inline-flex items-center gap-2 text-blue-500 font-bold hover:gap-4 transition-all">
+                        Request Project <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-32 bg-white/5 rounded-[60px] mx-6">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-5xl font-extrabold mb-8 italic">Our Power <span class="text-blue-500">Stack.</span></h2>
+                <p class="text-gray-400 mb-12 font-light">
+                    Kami menggunakan teknologi yang teruji secara global untuk memastikan keandalan sistem Anda.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass p-6 rounded-3xl flex items-center gap-4">
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center"><i data-lucide="code" class="text-blue-500"></i></div>
+                        <span class="font-bold">Django 5.0</span>
+                    </div>
+                    <div class="glass p-6 rounded-3xl flex items-center gap-4">
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center"><i data-lucide="database" class="text-blue-500"></i></div>
+                        <span class="font-bold">PostgreSQL</span>
+                    </div>
+                    <div class="glass p-6 rounded-3xl flex items-center gap-4">
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center"><i data-lucide="wifi" class="text-blue-500"></i></div>
+                        <span class="font-bold">MQTT v5</span>
+                    </div>
+                    <div class="glass p-6 rounded-3xl flex items-center gap-4">
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center"><i data-lucide="monitor" class="text-blue-500"></i></div>
+                        <span class="font-bold">React/Tailwind</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative flex justify-center" data-aos="fade-left">
+                <div class="w-full aspect-square glass rounded-[60px] flex items-center justify-center overflow-hidden">
+                    <div class="relative w-64 h-64 border border-blue-500/20 rounded-full animate-spin-slow flex items-center justify-center">
+                        <div class="absolute -top-4 bg-blue-600 p-4 rounded-2xl shadow-xl shadow-blue-500/50">
+                            <i data-lucide="zap" class="text-white"></i>
+                        </div>
+                        <div class="w-32 h-32 glass rounded-full flex items-center justify-center border-blue-500/50">
+                            <i data-lucide="activity" class="text-blue-500 w-12 h-12 animate-pulse"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-32 max-w-4xl mx-auto px-6">
+    <h2 class="text-4xl font-extrabold text-center mb-16" data-aos="fade-up">Frequently Asked <span class="text-blue-500">?</span></h2>
+    <div class="space-y-6">
+        <div class="glass p-8 rounded-[32px]" data-aos="fade-up">
+            <h4 class="text-xl font-bold mb-2">Berapa lama waktu implementasi IoT?</h4>
+            <p class="text-gray-500">Rata-rata 2-4 minggu tergantung pada kompleksitas perangkat keras dan jumlah titik monitoring yang dibutuhkan.</p>
+        </div>
+        <div class="glass p-8 rounded-[32px]" data-aos="fade-up" data-aos-delay="100">
+            <h4 class="text-xl font-bold mb-2">Apakah sistem bisa diakses via Mobile?</h4>
+            <p class="text-gray-500">Tentu! Semua dashboard kami responsif dan tersedia versi Progressive Web App (PWA) untuk akses cepat di Android/iOS.</p>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+
+<style>
+    .text-gradient {
+        background: linear-gradient(to right, #60a5fa, #a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .animate-spin-slow {
+        animation: spin 8s linear infinite;
+    }
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+</style>
+{% endblock %}

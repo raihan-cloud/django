@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}404 - Signal Lost | TechGroup Excellence{% endblock %}
+
+{% block content %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+    /* Gradient background effect */
+    .bg-gradient-404 {
+        background: radial-gradient(circle at center, #1e293b 0%, #0f172a 50%, #050505 100%);
+    }
+
+    /* Modern Glassmorphism effect */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.01);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 40px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Subtle Glitch animation */
+    .glitch {
+        position: relative;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+        animation: glitch-anim 2s infinite ease-out;
+    }
+
+    @keyframes glitch-anim {
+        0% { text-shadow: none; transform: none; }
+        2% { text-shadow: 2px 0 #60a5fa, -2px 0 #a855f7; transform: translate(1px, -1px); }
+        4% { text-shadow: none; transform: none; }
+        100% { text-shadow: none; transform: none; }
+    }
+
+    /* Floating animation */
+    .float {
+        animation: floating 4s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-10px) scale(1.02); }
+    }
+</style>
+
+<section class="min-h-screen flex items-center justify-center px-6 pt-20 bg-gradient-404 relative overflow-hidden">
+    
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-600/10 rounded-full blur-[90px] -z-10"></div>
+
+    <div class="max-w-4xl text-center relative z-10" data-aos="fade-up" data-aos-duration="1500">
+        
+        <h1 class="glitch text-[200px] md:text-[300px] font-extrabold text-white opacity-[0.03] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-20 tracking-tighter">404</h1>
+
+        <div class="glass-card p-12 md:p-16" data-aos="zoom-in" data-aos-delay="200">
+            
+            <div class="float w-24 h-24 bg-red-600/10 rounded-[30px] flex items-center justify-center mx-auto mb-10 border border-red-500/20 shadow-lg shadow-red-500/10">
+                <i data-lucide="scan-face" class="text-red-500 w-12 h-12"></i>
+            </div>
+            
+            <h2 class="text-gradient text-4xl md:text-5xl font-extrabold mb-6 tracking-tighter">Endpoint Not Registered.</h2>
+            
+            <p class="text-gray-400 text-base md:text-lg max-w-lg mx-auto mb-12 font-light leading-relaxed">
+                <span class="text-white font-medium">Node Jaringan:</span> Data tidak ditemukan pada koordinat URL yang Anda tuju. Server TechGroup melaporkan error sinkronisasi 
+                <code class="px-2 py-1 bg-white/5 rounded-lg text-red-400 font-mono text-xs">ERR_SIGNAL_LOST_404</code>.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+                <a href="{% url 'home' %}" class="px-10 py-5 bg-white text-black hover:bg-blue-600 hover:text-white rounded-2xl font-bold transition-all w-full sm:w-auto flex items-center justify-center gap-2 group shadow-xl shadow-white/5">
+                    <i data-lucide="refresh-cw" class="w-5 h-5 group-hover:rotate-180 transition-transform duration-500"></i>
+                    Reconnect to Home
+                </a>
+                <a href="{% url 'kontak' %}" class="px-10 py-5 glass hover:bg-white/10 rounded-2xl font-semibold transition-all w-full sm:w-auto text-gray-300">
+                    Report Issue
+                </a>
+            </div>
+
+        </div>
+
+        <p class="text-gray-700 text-xs mt-16 font-mono tracking-widest uppercase">
+            TechGroup Systems Excellence &copy; 2026
+        </p>
+
+    </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+</script>
+
+{% endblock %}
