@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% load comments %}
+
+{% block content %}
+<section class="relative pt-32 pb-20 px-6 max-w-5xl mx-auto overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] -z-10"></div>
+    
+    <div class="glass p-12 rounded-[50px] mb-12 border border-white/10 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-2 h-full bg-blue-500"></div>
+        <div class="flex items-start justify-between">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-6 uppercase tracking-widest">
+                    Service Detail
+                </div>
+                <h1 class="text-5xl font-extrabold mb-6 tracking-tight text-white">{{ object.judul }}</h1>
+                <p class="text-gray-400 text-lg leading-relaxed max-w-2xl">{{ object.deskripsi }}</p>
+            </div>
+            <div class="hidden md:flex w-24 h-24 bg-blue-600/10 rounded-3xl items-center justify-center border border-blue-500/20">
+                <i class="{{ object.ikon }} text-4xl text-blue-500"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        
+        <div class="lg:col-span-2 space-y-6" id="commentList">
+            <h3 class="text-2xl font-bold mb-8 flex items-center gap-3 text-white">
+                <i data-lucide="message-square" class="text-blue-500"></i>
+                Diskusi Layanan
+            </h3>
+
+            {% get_comment_list for object as comment_list %}
+            {% for comment in comment_list %}
+                <div class="group relative p-8 rounded-[32px] transition-all duration-300 {% if comment.user.is_staff %}bg-gradient-to-br from-blue-600/20 to-transparent border border-blue-500/30 shadow-lg shadow-blue-500/5{% else %}glass border-white/5{% endif %}">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-tr {% if comment.user.is_staff %}from-blue-500 to-cyan-400{% else %}from-gray-600 to-gray-700{% endif %} flex items-center justify-center font-bold text-white shadow-inner">
+                                {{ comment.user_name|slice:":1"|upper }}
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-white flex items-center gap-2">
+                                    {{ comment.user_name }}
+                                    {% if comment.user.is_staff %}
+                                        <span class="text-[10px] bg-blue-500 text-white px-2 py-0.5 rounded-full uppercase tracking-tighter">Admin</span>
+                                    {% endif %}
+                                </h5>
+                                <p class="text-xs text-gray-500">{{ comment.submit_date|date:"d M Y • H:i" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pl-16 text-gray-300 leading-relaxed">
+                        {{ comment.comment }}
+                    </div>
+                </div>
+            {% empty %}
+                <div id="noComment" class="glass p-12 rounded-[32px] text-center border-dashed border-white/10">
+                    <i data-lucide="info" class="w-12 h-12 text-gray-600 mx-auto mb-4"></i>
+                    <p class="text-gray-500 italic">Belum ada diskusi teknis untuk layanan ini.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="lg:col-span-1">
+            <div class="sticky top-32 glass p-8 rounded-[40px] border border-white/10 shadow-2xl">
+                <h4 class="text-xl font-bold mb-6 text-white flex items-center gap-2">
+                    <i data-lucide="pen-tool" class="w-5 h-5 text-blue-500"></i>
+                    Tinggalkan Pesan
+                </h4>
+                
+                {% get_comment_form for object as form %}
+                <form id="commentForm" action="{% url 'post_comment_ajax' %}" method="post" class="space-y-4">
+                    {% csrf_token %}
+                    
+                    <div class="space-y-1">
+                        <input type="text" name="name" id="id_name" placeholder="Nama Anda" required
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all">
+                    </div>
+
+                    <div class="space-y-1">
+                        <input type="email" name="email" id="id_email" placeholder="Email (Opsional)"
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all">
+                    </div>
+
+                    <div class="space-y-1">
+                        <textarea name="comment" id="id_comment" placeholder="Apa yang ingin Anda tanyakan?" required rows="5"
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all resize-none"></textarea>
+                    </div>
+
+                    <input type="hidden" name="object_pk" value="{{ object.id }}">
+                    
+                    <button type="submit" id="submitBtn" class="w-full group bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-lg shadow-blue-500/25">
+                        <span id="btnText">Kirim Pesan</span>
+                        <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .glass {
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+</style>
+
+<script>
+    // AJAX Logic
+    document.getElementById('commentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const form = this;
+        const btn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const formData = new FormData(form);
+        
+        // Animasi Loading
+        btn.disabled = true;
+        btnText.innerText = "Mengirim...";
+        btn.classList.add('opacity-70', 'cursor-not-allowed');
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': formData.get('csrf_token')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === 'success') {
+                // Hapus placeholder "Belum ada diskusi" jika ini komentar pertama
+                const noComment = document.getElementById('noComment');
+                if(noComment) noComment.remove();
+
+                // Template komentar baru (mirip dengan desain list di atas)
+                const commentList = document.getElementById('commentList');
+                const newCommentHtml = `
+                    <div class="group relative p-8 rounded-[32px] transition-all duration-300 glass border-white/5 animate-fade-in-up">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-gray-600 to-gray-700 flex items-center justify-center font-bold text-white shadow-inner">
+                                    ${data.name.charAt(0).toUpperCase()}
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-white">${data.name}</h5>
+                                    <p class="text-xs text-gray-500">Baru saja</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pl-16 text-gray-300 leading-relaxed">
+                            ${data.comment}
+                        </div>
+                    </div>
+                `;
+                
+                // Masukkan komentar baru di bawah heading "Diskusi Layanan"
+                commentList.insertAdjacentHTML('beforeend', newCommentHtml);
+                
+                // Reset Form
+                form.reset();
+                lucide.createIcons(); // Re-render ikon jika ada
+            }
+        })
+        .catch(error => {
+            alert('Gagal mengirim komentar. Silakan coba lagi.');
+        })
+        .finally(() => {
+            // Kembalikan tombol ke status normal
+            btn.disabled = false;
+            btnText.innerText = "Kirim Pesan";
+            btn.classList.remove('opacity-70', 'cursor-not-allowed');
+        });
+    });
+
+    // Initialize Lucide Icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+</script>
+
+<style>
+    /* Animasi kecil untuk komentar baru agar halus */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+        animation: fadeInUp 0.5s ease-out forwards;
+    }
+</style>
+{% endblock %}

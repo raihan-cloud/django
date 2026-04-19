@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}TechGroup | Future of IoT{% endblock %}</title>
     
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed Layanan TechGroup" href="{% url 'service_feed' %}" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -30,7 +32,6 @@
             -webkit-text-fill-color: transparent; 
         }
 
-        /* Nav Link Animation */
         .nav-link { transition: all 0.3s ease; position: relative; }
         .nav-link::after { 
             content: ''; 
@@ -45,7 +46,6 @@
         .nav-link:hover::after { width: 100%; }
         .nav-link:hover { color: white; }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
@@ -60,7 +60,7 @@
                 <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:rotate-12 transition-transform duration-300">
                     <i data-lucide="zap" class="text-white w-6 h-6 fill-current"></i>
                 </div>
-                <span class="flex items-center">TECH<span class="text-blue-500">GROUP</span></span>
+                <span class="flex items-center uppercase">TECH<span class="text-blue-500">GROUP</span></span>
             </a>
 
             <div class="hidden md:flex items-center gap-10 text-[13px] font-bold uppercase tracking-widest text-gray-400">
@@ -104,7 +104,7 @@
                         <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                             <i data-lucide="zap" class="text-white w-4 h-4 fill-current"></i>
                         </div>
-                        <span class="text-xl font-bold tracking-tighter">TECHGROUP</span>
+                        <span class="text-xl font-bold tracking-tighter uppercase">TECHGROUP</span>
                     </div>
                     <p class="text-gray-500 max-w-sm leading-relaxed mb-6">
                         Pionir dalam integrasi sistem IoT dan Web Development untuk solusi infrastruktur digital masa depan.
@@ -113,6 +113,10 @@
                         <a href="#" class="text-gray-600 hover:text-white transition-colors"><i data-lucide="instagram"></i></a>
                         <a href="#" class="text-gray-600 hover:text-white transition-colors"><i data-lucide="github"></i></a>
                         <a href="#" class="text-gray-600 hover:text-white transition-colors"><i data-lucide="linkedin"></i></a>
+                        
+                        <a href="{% url 'service_feed' %}" title="RSS Feed" class="text-orange-500/70 hover:text-orange-500 transition-colors">
+                            <i data-lucide="rss"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -126,11 +130,15 @@
                 </div>
 
                 <div>
-                    <h5 class="text-white font-bold mb-6">Support</h5>
+                    <h5 class="text-white font-bold mb-6">Updates</h5>
                     <ul class="space-y-4 text-sm text-gray-500">
+                        <li>
+                            <a href="{% url 'service_feed' %}" class="flex items-center gap-2 hover:text-orange-400 transition-colors text-orange-500/80">
+                                <i data-lucide="rss" class="w-4 h-4"></i> RSS Feed Update
+                            </a>
+                        </li>
                         <li><a href="{% url 'kontak' %}" class="hover:text-blue-500 transition-colors">Contact</a></li>
                         <li><a href="#" class="hover:text-blue-500 transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-blue-500 transition-colors">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
@@ -147,10 +155,8 @@
     </footer>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Navbar Scroll Effect
         window.onscroll = function() {
             const nav = document.getElementById('navbar');
             if (window.pageYOffset > 50) {

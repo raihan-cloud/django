@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_comments',
+    'django.contrib.sites',
     'hello',
 ]
 
@@ -63,10 +65,12 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # Tambahkan baris ini di dalam DIRS
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -165,6 +169,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Jika tadi di shell muncul angka 2, maka:
+SITE_ID = 2
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
@@ -177,6 +183,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Session berakhir saat browser ditutup
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Durasi session dalam detik (misal 1 jam)
+SESSION_COOKIE_AGE = 3600 
+
+# Gunakan database untuk menyimpan session (Default)
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
@@ -188,3 +202,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # Jika folder static ada d
 # Jalur untuk file upload (Foto Anggota)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
